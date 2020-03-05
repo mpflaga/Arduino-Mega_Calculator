@@ -8,11 +8,11 @@
 #include "Calculator.h"
 
 /**
- * \brief Constructor
- * \param[in] size of memory to allocate for char arrays.
- *
- * reserve memory
- */
+   \brief Constructor
+   \param[in] size of memory to allocate for char arrays.
+
+   reserve memory
+*/
 Calculator::Calculator(int _size) {
 
   // allocate memory for char arrays.
@@ -31,19 +31,19 @@ Calculator::Calculator(int _size) {
 }
 
 /**
- * \brief Destructortructor
- *
- * release alocated memory.
- */
- Calculator::~Calculator() {
+   \brief Destructortructor
+
+   release alocated memory.
+*/
+Calculator::~Calculator() {
   free(numStr0);
   free(numStr1);
 }
 
 /**
- * \brief Initialize the Calculator
- * initialize Char Arraysy
- */
+   \brief Initialize the Calculator
+   initialize Char Arraysy
+*/
 void Calculator::begin() {
   zeroStr(displayStr, _displayStrSize);
   zeroStr(numStr0, _numStrSize);
@@ -51,12 +51,12 @@ void Calculator::begin() {
 }
 
 /**
- * \brief Clear out a Char Array
- * \param[in] pointer to target char arrays.
- * \param[in] size of char array.
- *
- * Fills 0x00(aka NULL) from start through length.
- */
+   \brief Clear out a Char Array
+   \param[in] pointer to target char arrays.
+   \param[in] size of char array.
+
+   Fills 0x00(aka NULL) from start through length.
+*/
 void Calculator::zeroStr(char *dest, int length) {
   // set entire array to NULL.
   memset(dest, NULL, length);
@@ -65,26 +65,26 @@ void Calculator::zeroStr(char *dest, int length) {
 }
 
 /**
- * \brief Parse A digit into the Calculator.
- * \param[in] an ASCII Char value. [0-9+-*\/nCc]
- *
- * Processes the character as a keypad button on a calculator.
- * 0-9 are appended to displayed value.
- *
- * One of the following operations loads the current Entry into numStr0
- * '+' is addition operation
- * '-' is subtraction operation
- * '*' is multiplaction operation
- * '\/' is divide operation
- * 'n' is Negative operation
- * 'C' is clear all accumlators and operations.
- * 'c' is clear current Entry, typically maps to the CE button.
- *
- * '=' loads the current Entry into numStr1 and performs the 
- *     prior entered operation. Loading the resultant into numStr0
- *     and moving numStr0 into numStr1.
- *     This allows successive '='s to simply re-produce the last operation
- */
+   \brief Parse A digit into the Calculator.
+   \param[in] an ASCII Char value. [0-9+-*\/nCc]
+
+   Processes the character as a keypad button on a calculator.
+   0-9 are appended to displayed value.
+
+   One of the following operations loads the current Entry into numStr0
+   '+' is addition operation
+   '-' is subtraction operation
+   '*' is multiplaction operation
+   '\/' is divide operation
+   'n' is Negative operation
+   'C' is clear all accumlators and operations.
+   'c' is clear current Entry, typically maps to the CE button.
+
+   '=' loads the current Entry into numStr1 and performs the
+       prior entered operation. Loading the resultant into numStr0
+       and moving numStr0 into numStr1.
+       This allows successive '='s to simply re-produce the last operation
+*/
 void Calculator::parse(char *output, char inByte) {
 
   int displayStrLength = strlen(displayStr);
@@ -223,7 +223,7 @@ void Calculator::parse(char *output, char inByte) {
     }
   }
   strcpy(output, displayStr);
-  
+
   IFDEBUG(Serial.print("displayStr[")); IFDEBUG(Serial.print(strlen(displayStr))); IFDEBUG(Serial.print("]=\"")); IFDEBUG(Serial.print(displayStr)); IFDEBUG(Serial.print("\",")); IFDEBUG(Serial.print("(")); IFDEBUG(Serial.print(BigNumber (displayStr))); IFDEBUG(Serial.print(") "));
 
   IFDEBUG(Serial.print("numStr0[")); IFDEBUG(Serial.print(strlen(numStr0))); IFDEBUG(Serial.print("]=\"")); IFDEBUG(Serial.print(numStr0)); IFDEBUG(Serial.print("\",")); IFDEBUG(Serial.print("(")); IFDEBUG(Serial.print(BigNumber (numStr0))); IFDEBUG(Serial.print(") "));

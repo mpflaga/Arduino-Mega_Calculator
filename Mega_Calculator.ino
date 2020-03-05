@@ -21,14 +21,14 @@ Calculator Calculator(DISPLAY_SIZE);
 void setup() {
   Serial.begin(115200); // enable port for debug
   Serial.println("Mega Calculator is starting");
-  
+
   strip = new Adafruit_NeoPixel((DISPLAY_SIZE * LEDdisplay.ledsPerDigit()), LED_PIN, NEO_GRB + NEO_KHZ800);
   strip->begin();
 
   strip->clear();
   strip->show();
 
-  strip->setBrightness(255 *.9);
+  strip->setBrightness(255 * .9);
   LEDdisplay.begin(strip, Serial);
   LEDdisplay.setColor(255, 255, 255);
 
@@ -38,7 +38,7 @@ void setup() {
   LEDdisplay.setColor(0, 255, 0);
   LEDdisplay.printDisplay("0.");
 
-  
+
 } // setup() - end
 
 void loop() {

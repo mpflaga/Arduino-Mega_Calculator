@@ -1,9 +1,9 @@
 /*
-* config.h
-* number.c from GNU bc-1.06 exports some symbols without the bc_ prefix.
-* This header file fixes this without touching either number.c or number.h
-* (luckily, number.c already wants to include a config.h).
-* Clients of number.c should include config.h before number.h.
+  config.h
+  number.c from GNU bc-1.06 exports some symbols without the bc_ prefix.
+  This header file fixes this without touching either number.c or number.h
+  (luckily, number.c already wants to include a config.h).
+  Clients of number.c should include config.h before number.h.
 */
 
 #include <string.h>
@@ -21,4 +21,3 @@
 #define bc_out_of_memory()	bc_error(0)
 
 void bc_error(const int mesg);
-
