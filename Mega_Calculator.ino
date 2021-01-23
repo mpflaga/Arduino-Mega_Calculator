@@ -34,7 +34,7 @@ Button pins[] = {
   {18, '7'},  
   {17, '4'},  
   {16, '1'},  
-  {15, 's'},  
+  {15, 'n'},  
   {14, '0'},  
 //{ 0, 'R'}, // Rx of Serial0, needed for IDE.
 //{ 1, 'T'}, // Tx of Serial0
