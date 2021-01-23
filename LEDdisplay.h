@@ -15,6 +15,30 @@
 #define LEDdisplay_h
 #include "Arduino.h"
 
+/**
+   \brief decode map LEDs to turn on or off for 0-9.
+
+   Stored into Flash memory and referenced by pointer for direct access.
+   The index of the array maps LEDs for the corresponding 7-Segment+DP.
+*/
+static const byte digit_array[][29] PROGMEM = {
+  /* REF	{F,F,F,F,A,A,A,A,B,B,B,B,C,C,C,C,D,D,D,D,E,E,E,E,G,G,G,G,DP},*/
+  /* 0 */	{1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 0, 0, 0, 0},
+  /* 1 */	{0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
+  /* 2 */	{0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0},
+  /* 3 */	{0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 0, 0, 0, 1, 1, 1, 1, 0},
+  /* 4 */	{1, 1, 1, 1, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 0},
+  /* 5 */	{1, 1, 1, 1, 1, 1, 1, 1, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 0, 0, 0, 0, 1, 1, 1, 1, 0},
+  /* 6 */	{1, 1, 1, 1, 1, 1, 1, 1, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0},
+  /* 7 */	{0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
+  /* 8 */	{1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0},
+  /* 9 */	{1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 0}
+};
+
+/**
+ * \class LEDdisplay
+ * \brief Interface Driver to the f NeoPixels in 7 segment arrangement.
+ */
 class LEDdisplay {
 
   public:
